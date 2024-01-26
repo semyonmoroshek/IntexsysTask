@@ -7,7 +7,32 @@
 
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="lv.semyonmoroshek.intexsystask.ui.CategoriesFragment"
+        android:name="lv.semyonmoroshek.intexsystask.ui.categoryList.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="lv.semyonmoroshek.intexsystask.ui.products.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/productItemFragment"
+        android:name="lv.semyonmoroshek.intexsystask.ui.productItem.ProductItemFragment"
+        android:label="fragment_product_item"
+        tools:layout="@layout/fragment_product_item" >
+
+        <argument
+            android:name="url"
+            app:argType="string" />
+
+    </fragment>
 </navigation>

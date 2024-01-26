@@ -6,25 +6,25 @@ class CategoryListResp : ArrayList<CategoryItem>()
 
 data class CategoryItem(
     @SerializedName("category_id")
-    val category_id: String? = null,
+    val categoryId: String? = null,
     @SerializedName("featured")
     val featured: String? = null,
     @SerializedName("full_name")
-    val full_name: String? = null,
+    val fullName: String? = null,
     @SerializedName("has_children")
-    val has_children: Boolean? = null,
+    val hasChildren: Boolean? = null,
     @SerializedName("images")
     val images: List<Image>? = null,
     @SerializedName("orderable_count")
-    val orderable_count: String? = null,
+    val orderableCount: String? = null,
     @SerializedName("parent_id")
-    val parent_id: String? = null,
+    val parentId: String? = null,
     @SerializedName("popularity")
     val popularity: String? = null,
     @SerializedName("short_name")
-    val short_name: String? = null,
+    val shortName: String? = null,
     @SerializedName("unavailable_count")
-    val unavailable_count: String? = null,
+    val unavailableCount: String? = null,
     @SerializedName("url")
     val url: String? = null
 )
@@ -37,5 +37,5 @@ data class Image(
     @SerializedName("url")
     val url: String? = null,
     @SerializedName("variant_id")
-    val variant_id: Int? = null
+    val variantId: Int? = null
 )

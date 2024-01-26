@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-    private val BASE_URL = "https://www.opticsplanet.com/api/0.2/"
+    private val BASE_URL = "https://www.opticsplanet.com/"
 
     @Provides
     fun provideClient(): OkHttpClient {
@@ -38,6 +38,11 @@ class AppModule {
             .build()
         return retrofit.create(API::class.java)
     }
+
+//    @Singleton @Provides
+//    fun repository(api: API) : Repository {
+//        return Repository.getInstance(api)
+//    }
 
 
 }
