@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import lv.semyonmoroshek.intexsystask.databinding.FragmentProductItemBinding
 
-
 @AndroidEntryPoint
 class ProductItemFragment : Fragment() {
 
@@ -49,8 +48,10 @@ class ProductItemFragment : Fragment() {
 
             val webSettings: WebSettings = binding.webView.settings
             webSettings.javaScriptEnabled = true
-            val htmlCode = product.description
-            binding.webView.loadDataWithBaseURL(null, htmlCode, "text/html", "UTF-8", null)
+
+            product.description?.let { htmlCode ->
+                binding.webView.loadDataWithBaseURL(null, htmlCode, "text/html", "UTF-8", null)
+            }
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { showLoading ->

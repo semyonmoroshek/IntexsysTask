@@ -32,7 +32,6 @@ class AppModule {
         return retrofit.create(API::class.java)
     }
 
-
     @Provides
     fun provideClient(): OkHttpClient {
         val trustAllCerts: Array<TrustManager> = arrayOf(

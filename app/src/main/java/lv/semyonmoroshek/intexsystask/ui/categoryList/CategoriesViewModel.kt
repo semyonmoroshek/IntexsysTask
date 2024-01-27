@@ -39,14 +39,25 @@ class CategoriesViewModel @Inject constructor(
         )
     }
 
-    private val _categoryList = MutableLiveData<List<CategoryItem>>()
-    val categoryList: LiveData<List<CategoryItem>> = _categoryList
+    private val _categoryList = MutableLiveData<List<CategoryItemUI>>()
+    val categoryList: LiveData<List<CategoryItemUI>> = _categoryList
 
     fun getCategoryList() {
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
+            loading.postValue(true)
             val resp = repository.getCategories()
+
+            val categoryList: List<CategoryItemUI> = resp.map {
+                CategoryItemUI(
+                    shortName = it.shortName,
+                    url = it.url,
+                    categoryId = it.categoryId
+                )
+            }
+
+            _categoryList.postValue(categoryList)
+
             loading.postValue(false)
-            _categoryList.postValue(resp)
         }
     }
 }

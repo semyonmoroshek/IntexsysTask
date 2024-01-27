@@ -7,13 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import lv.semyonmoroshek.intexsystask.R
-import lv.semyonmoroshek.intexsystask.data.model.CategoryItem
 
 class CategoriesAdapter(
     val openCategory: (categoryUrl: String?) -> Unit,
 ) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
-    var dataList = emptyList<CategoryItem>()
+    private var dataList = emptyList<CategoryItemUI>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater
@@ -35,7 +34,7 @@ class CategoriesAdapter(
         return dataList.size
     }
 
-    fun setData(memberList: List<CategoryItem>) {
+    fun setData(memberList: List<CategoryItemUI>) {
         val memberDiffUtil = CategoriesDiffUtil(dataList, memberList)
         val memberDiffResult = DiffUtil.calculateDiff(memberDiffUtil)
 

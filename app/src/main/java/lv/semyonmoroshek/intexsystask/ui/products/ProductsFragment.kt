@@ -26,11 +26,9 @@ class ProductsFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putString("productUrl", productUrl)
                 findNavController().navigate(R.id.productItemFragment, bundle)
-
             }
         )
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

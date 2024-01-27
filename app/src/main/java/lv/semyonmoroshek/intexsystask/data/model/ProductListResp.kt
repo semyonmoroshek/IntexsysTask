@@ -6,17 +6,17 @@ data class ProductListResp(
     @SerializedName("gridProducts")
     val gridProducts: GridProducts? = null,
     @SerializedName("grid_config")
-    val grid_config: GridConfig
+    val grid_config: GridConfig? = null
 )
 
 data class GridProducts(
     @SerializedName("elements")
-    val elements: List<Element>
+    val elements: List<Element>? = null
 )
 
 data class GridConfig(
     @SerializedName("size")
-    val size: Int
+    val size: Int? = null
 )
 
 data class Element(
@@ -152,7 +152,7 @@ data class Element(
 
 data class Brand(
     @SerializedName("name")
-    val name: String
+    val name: String? = null
 )
 
 data class Category(
@@ -163,21 +163,21 @@ data class Category(
     @SerializedName("popularity")
     val popularity: String? = null,
     @SerializedName("url")
-    val url: String
+    val url: String? = null
 )
 
 data class Dimensions(
     @SerializedName("height")
     val height: Int? = null,
     @SerializedName("width")
-    val width: Int
+    val width: Int? = null
 )
 
 data class ElementDimensions(
     @SerializedName("height")
     val height: Int? = null,
     @SerializedName("width")
-    val width: Int
+    val width: Int? = null
 )
 
 data class GridData(
@@ -362,37 +362,8 @@ data class GridData(
     @SerializedName("whole")
     val whole: String? = null,
     @SerializedName("whole_to")
-    val whole_to: String
+    val whole_to: String? = null
 )
-
-//data class ItemFlagToFilterMap(
-//   @SerializedName ("best")
-//   val best-rated: String? = null,
-//   @SerializedName ("blazin")
-//   val blazin-deal: String? = null,
-//   @SerializedName ("clearance")
-//   val clearance: String? = null,
-//   @SerializedName ("extra")
-//   val extra-bucks: String? = null,
-//   @SerializedName ("extra")
-//   val extra-rewards: String? = null,
-//   @SerializedName ("final")
-//   val final-sale: String? = null,
-//   @SerializedName ("free")
-//   val free-second-day-air: String? = null,
-//   @SerializedName ("members")
-//   val members-only: String? = null,
-//   @SerializedName ("new")
-//   val new: String? = null,
-//   @SerializedName ("on")
-//   val on-sale: String? = null,
-//   @SerializedName ("outlet")
-//   val outlet: String? = null,
-//   @SerializedName ("shed")
-//   val shed: String? = null,
-//   @SerializedName ("with")
-//   val with-free-gifts: String
-//)
 
 data class MainCategory(
     @SerializedName("lev")
@@ -402,7 +373,7 @@ data class MainCategory(
     @SerializedName("popularity")
     val popularity: String? = null,
     @SerializedName("url")
-    val url: String
+    val url: String? = null
 )
 
 data class SpecialOffersX(
@@ -443,7 +414,7 @@ data class SpecialOffersX(
     @SerializedName("promotions")
     val promotions: List<Any>? = null,
     @SerializedName("special_offer_to_type")
-    val special_offer_to_type: Any?
+    val special_offer_to_type: Any? = null
 )
 
 data class TopSpecificationX(
@@ -456,7 +427,7 @@ data class TopSpecificationX(
     @SerializedName("title")
     val title: String? = null,
     @SerializedName("values")
-    val values: List<ValueX>
+    val values: List<ValueX>? = null
 )
 
 data class AreMinPricesAfterRebate(
@@ -471,7 +442,7 @@ data class AreMinPricesAfterRebate(
     @SerializedName("test_offhours")
     val test_offhours: Boolean? = null,
     @SerializedName("test_regular")
-    val test_regular: Boolean
+    val test_regular: Boolean? = null
 )
 
 data class AreSavingsExact(
@@ -486,7 +457,7 @@ data class AreSavingsExact(
     @SerializedName("test_offhours")
     val test_offhours: Boolean? = null,
     @SerializedName("test_regular")
-    val test_regular: Boolean
+    val test_regular: Boolean? = null
 )
 
 data class AreSegmentSalePricesHidden(
@@ -501,7 +472,7 @@ data class AreSegmentSalePricesHidden(
     @SerializedName("test_offhours")
     val test_offhours: Int? = null,
     @SerializedName("test_regular")
-    val test_regular: Int
+    val test_regular: Int? = null
 )
 
 data class GridSavePercents(
@@ -516,7 +487,7 @@ data class GridSavePercents(
     @SerializedName("test_offhours")
     val test_offhours: Int? = null,
     @SerializedName("test_regular")
-    val test_regular: Int
+    val test_regular: Int? = null
 )
 
 data class MaxFinalSalePrices(
@@ -531,7 +502,7 @@ data class MaxFinalSalePrices(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MaxFinalSalePricesPerUomNumber(
@@ -546,7 +517,7 @@ data class MaxFinalSalePricesPerUomNumber(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MaxGridSavings(
@@ -561,7 +532,7 @@ data class MaxGridSavings(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MaxSalePrices(
@@ -576,7 +547,7 @@ data class MaxSalePrices(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MaxSavings(
@@ -591,7 +562,7 @@ data class MaxSavings(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MinFinalGridSalePrices(
@@ -606,7 +577,7 @@ data class MinFinalGridSalePrices(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MinFinalSalePriceUomLabels(
@@ -621,7 +592,7 @@ data class MinFinalSalePriceUomLabels(
     @SerializedName("test_offhours")
     val test_offhours: String? = null,
     @SerializedName("test_regular")
-    val test_regular: String
+    val test_regular: String? = null
 )
 
 data class MinFinalSalePrices(
@@ -636,7 +607,7 @@ data class MinFinalSalePrices(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MinFinalSalePricesPerUomNumber(
@@ -651,7 +622,7 @@ data class MinFinalSalePricesPerUomNumber(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MinGridSavings(
@@ -666,7 +637,7 @@ data class MinGridSavings(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MinSalePrices(
@@ -681,7 +652,7 @@ data class MinSalePrices(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class MinSavings(
@@ -696,7 +667,7 @@ data class MinSavings(
     @SerializedName("test_offhours")
     val test_offhours: Double? = null,
     @SerializedName("test_regular")
-    val test_regular: Double
+    val test_regular: Double? = null
 )
 
 data class SavePercents(
@@ -711,7 +682,7 @@ data class SavePercents(
     @SerializedName("test_offhours")
     val test_offhours: Int? = null,
     @SerializedName("test_regular")
-    val test_regular: Int
+    val test_regular: Int? = null
 )
 
 data class SpecialOffers(
@@ -752,7 +723,7 @@ data class SpecialOffers(
     @SerializedName("promotions")
     val promotions: List<Any>? = null,
     @SerializedName("special_offer_to_type")
-    val special_offer_to_type: SpecialOfferToType
+    val special_offer_to_type: SpecialOfferToType? = null
 )
 
 data class TopSpecification(
@@ -765,7 +736,7 @@ data class TopSpecification(
     @SerializedName("title")
     val title: String? = null,
     @SerializedName("values")
-    val values: List<Value>
+    val values: List<Value>? = null
 )
 
 data class SpecialOfferToType(
@@ -798,7 +769,7 @@ data class SpecialOfferToType(
     @SerializedName("is_seasonal")
     val is_seasonal: String? = null,
     @SerializedName("is_second_day_air")
-    val is_second_day_air: String
+    val is_second_day_air: String? = null
 )
 
 data class Value(
@@ -813,12 +784,12 @@ data class Value(
     @SerializedName("value_max")
     val value_max: String? = null,
     @SerializedName("value_min")
-    val value_min: String
+    val value_min: String? = null
 )
 
 data class ValueX(
     @SerializedName("title")
     val title: String? = null,
     @SerializedName("uom")
-    val uom: String
+    val uom: String? = null
 )

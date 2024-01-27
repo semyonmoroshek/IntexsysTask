@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:background="@color/background"
+    android:orientation="horizontal"
+    android:padding="6dp"
     tools:context=".ui.categoryList.CategoriesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -15,18 +16,10 @@
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
     <ProgressBar
         android:id="@+id/loader"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_centerInParent="true" />
+        android:layout_gravity="center" />
 
-</RelativeLayout>
+</FrameLayout>

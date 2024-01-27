@@ -1,11 +1,10 @@
 package lv.semyonmoroshek.intexsystask.ui.products
 
 import androidx.recyclerview.widget.DiffUtil
-import lv.semyonmoroshek.intexsystask.data.model.Element
 
 class ProductsDiffUtil(
-    private val oldList: List<Element>,
-    private val newList: List<Element>
+    private val oldList: List<ProductElementUI>,
+    private val newList: List<ProductElementUI>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size

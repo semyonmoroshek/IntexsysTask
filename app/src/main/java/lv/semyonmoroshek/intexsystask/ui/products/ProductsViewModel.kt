@@ -10,17 +10,15 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import lv.semyonmoroshek.intexsystask.data.Repository
-import lv.semyonmoroshek.intexsystask.data.model.Element
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
-    val repository: Repository
+    private val repository: Repository
 ) : ViewModel() {
 
     private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean> = _loading
-
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         _loading.postValue(false)
@@ -30,14 +28,25 @@ class ProductsViewModel @Inject constructor(
         )
     }
 
-    private val _productList = MutableLiveData<List<Element>>()
-    val productList: LiveData<List<Element>> = _productList
+    private val _productList = MutableLiveData<List<ProductElementUI>>()
+    val productList: LiveData<List<ProductElementUI>> = _productList
 
     fun getProductList(categoryUrl: String) {
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             _loading.postValue(true)
             val resp = repository.getProductList(categoryUrl)
-            _productList.postValue(resp)
+
+            val productList: List<ProductElementUI> = resp.map {
+                ProductElementUI(
+                    fullName = it.fullName,
+                    price = it.price,
+                    primaryImage = "http://images1.opticsplanet.com/120-90-ffffff/${it.primaryImage}.jpg",
+                    id = it.id,
+                    url = it.url
+                )
+            }
+
+            _productList.postValue(productList)
             _loading.postValue(false)
         }
     }

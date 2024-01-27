@@ -1,11 +1,10 @@
 package lv.semyonmoroshek.intexsystask.ui.categoryList
 
 import androidx.recyclerview.widget.DiffUtil
-import lv.semyonmoroshek.intexsystask.data.model.CategoryItem
 
 class CategoriesDiffUtil(
-    private val oldList: List<CategoryItem>,
-    private val newList: List<CategoryItem>
+    private val oldList: List<CategoryItemUI>,
+    private val newList: List<CategoryItemUI>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
