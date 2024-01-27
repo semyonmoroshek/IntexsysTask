@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.IntexsysTask" parent="Theme.AppCompat.Light.DarkActionBar" />
+    <style name="Theme.IntexsysTask" parent="Theme.AppCompat.DayNight" />
+
+    <style name="text">
+        <item name="android:textColor">@color/data</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 </resources>

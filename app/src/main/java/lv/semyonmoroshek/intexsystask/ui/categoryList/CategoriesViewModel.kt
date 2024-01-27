@@ -2,28 +2,37 @@ package lv.semyonmoroshek.intexsystask.ui.categoryList
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import androidx.paging.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import lv.semyonmoroshek.intexsystask.data.Event
+import lv.semyonmoroshek.intexsystask.data.PagingSource
 import lv.semyonmoroshek.intexsystask.data.Repository
 import lv.semyonmoroshek.intexsystask.data.model.CategoryItem
+import lv.semyonmoroshek.intexsystask.data.network.API
 import javax.inject.Inject
 
 @HiltViewModel
 class CategoriesViewModel @Inject constructor(
-    val repository: Repository
+    private val repository: Repository,
 ) : ViewModel() {
 
-    val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-//        if (repository.hasInternetConnection.value == true) {
-//        }
-        repository.showError.postValue(Event(throwable.message.toString()))
-//        loading.postValue(false)
+    val loading = MutableLiveData<Boolean>(false)
+
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        loading.postValue(false)
         Log.e(
             "ERR",
             "error -> ${throwable.message} - ${throwable.localizedMessage}; throwable = $throwable"
@@ -35,8 +44,9 @@ class CategoriesViewModel @Inject constructor(
 
     fun getCategoryList() {
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
-            _categoryList.postValue(repository.getCategories())
+            val resp = repository.getCategories()
+            loading.postValue(false)
+            _categoryList.postValue(resp)
         }
     }
-
 }

@@ -29,9 +29,7 @@ class CategoriesAdapter(
         holder.itemView.setOnClickListener {
             openCategory(item.url)
         }
-
     }
-
 
     override fun getItemCount(): Int {
         return dataList.size

@@ -9,10 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import lv.semyonmoroshek.intexsystask.data.Event
 import lv.semyonmoroshek.intexsystask.data.Repository
-import lv.semyonmoroshek.intexsystask.data.model.CategoryItem
-import lv.semyonmoroshek.intexsystask.data.model.ProductInfoResp
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,21 +17,38 @@ class ProductItemViewModel @Inject constructor(
     val repository: Repository
 ) : ViewModel() {
 
+    private val _loading = MutableLiveData(false)
+    val loading: LiveData<Boolean> = _loading
+
     val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        repository.showError.postValue(Event(throwable.message.toString()))
+        _loading.postValue(false)
         Log.e(
             "ERR",
             "error -> ${throwable.message} - ${throwable.localizedMessage}; throwable = $throwable"
         )
     }
 
-    private val _productInfo = MutableLiveData<ProductInfoResp>()
-    val productInfo: LiveData<ProductInfoResp> = _productInfo
+    private val _productInfo = MutableLiveData<ProductInfoUI>()
+    val productInfo: LiveData<ProductInfoUI> = _productInfo
 
     fun getProductInfo(productUrl: String) {
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
-            _productInfo.postValue(repository.getProductInfo(productUrl))
+            _loading.postValue(true)
+            val resp = repository.getProductInfo(productUrl)
+            resp?.apply {
+                _productInfo.postValue(
+                    ProductInfoUI(
+                        shortName = shortName,
+                        minSalePrice = minSalePrice,
+                        primaryImage = "http://images1.opticsplanet.com/365-240-ffffff/$primary_image.jpg",
+                        description = description
+
+                    )
+                )
+            }
+            _loading.postValue(false)
         }
     }
 
 }
+

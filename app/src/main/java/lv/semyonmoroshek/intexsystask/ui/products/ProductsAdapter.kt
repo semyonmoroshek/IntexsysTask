@@ -1,5 +1,6 @@
 package lv.semyonmoroshek.intexsystask.ui.products
 
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
 import com.squareup.picasso.Picasso
 import lv.semyonmoroshek.intexsystask.R
 import lv.semyonmoroshek.intexsystask.data.model.Element
@@ -28,43 +33,15 @@ class ProductsAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = dataList.getOrNull(position) ?: return
         holder.txtItemTitle.text = item.fullName
+        holder.txtPrice.text = item.price.toString()
 
         val link = "http://images1.opticsplanet.com/120-90-ffffff/${item.primaryImage}.jpg"
         Log.d("TTTT", "link: $link")
 
-            Picasso.with(holder.itemView.context)
-                .load(link)
-                .into(holder.img)
-
-//        Glide.with(holder.itemView.context)
-//            .load(link)
-//            .transition(DrawableTransitionOptions.withCrossFade())
-//            .listener(object : RequestListener<Drawable> {
-//                override fun onLoadFailed(
-//                    e: GlideException?,
-//                    model: Any?,
-//                    target: Target<Drawable>,
-//                    isFirstResource: Boolean
-//                ): Boolean {
-//
-//                    Log.d("TTTT", "onLoadFailed: $e")
-//
-//                    return false
-//                }
-//
-//                override fun onResourceReady(
-//                    resource: Drawable,
-//                    model: Any,
-//                    target: Target<Drawable>?,
-//                    dataSource: DataSource,
-//                    isFirstResource: Boolean
-//                ): Boolean {
-//
-//                    return false
-//                }
-//
-//            })
-//            .into(holder.img)
+        Glide.with(holder.itemView.context)
+            .load(link)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(holder.img)
 
         holder.itemView.setOnClickListener {
             openProduct(item.url)

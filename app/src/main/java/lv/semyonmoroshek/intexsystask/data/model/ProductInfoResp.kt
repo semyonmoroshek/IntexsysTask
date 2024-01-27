@@ -254,7 +254,7 @@ data class ProductInfoResp(
   val min_grid_saving: Double,
 
   @SerializedName ("min_sale_price")
-  val min_sale_price: Double,
+  val minSalePrice: Double,
 
   @SerializedName ("min_saving")
   val min_saving: Double,
@@ -320,7 +320,7 @@ data class ProductInfoResp(
   val savings_text: String,
 
   @SerializedName ("short_name")
-  val short_name: String,
+  val shortName: String,
 
   @SerializedName ("show_as_low_as")
   val show_as_low_as: Boolean,

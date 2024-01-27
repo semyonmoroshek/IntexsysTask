@@ -5,21 +5,28 @@ import lv.semyonmoroshek.intexsystask.data.model.ProductInfoResp
 import lv.semyonmoroshek.intexsystask.data.model.ProductListResp
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Url
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface API {
 
     @GET("api/0.2/categories")
-    suspend fun getCategories(): Response<CategoryListResp>
+    suspend fun getCategoriesPagging(
+        @Query("page") page: Int,
+        @Query("pageSize") pageSize: Int
+    ): Response<CategoryListResp>
 
-    @GET
+    @GET("api/0.2/categories")
+    suspend fun getCategories(
+    ): Response<CategoryListResp>
+
+    @GET("iv-api/0.3/catalog/{categoryUrl}/products?_iv_include=gridProducts")
     suspend fun getProducts(
-        @Url url: String
+        @Path("categoryUrl") categoryUrl: String
     ): Response<ProductListResp>
 
-    @GET
+    @GET("api/0.3/products/{productUrl}")
     suspend fun getProductInfo(
-        @Url url: String
+        @Path("productUrl") productUrl: String
     ): Response<ProductInfoResp>
-
 }

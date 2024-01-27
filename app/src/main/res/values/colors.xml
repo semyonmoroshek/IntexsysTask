@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#FFFFFFFF</color>
     <color name="grey">#A9A9A9</color>
+    <color name="data">#0E0E0E</color>
+    <color name="background">#E5E5E5</color>
+    <color name="region">#F5F5F5</color>
 </resources>
